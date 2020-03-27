@@ -31,7 +31,3 @@ Condition	Info	Frequency	Block	Timing File	TaskObject#1	TaskObject#2	TaskObject#
 30	'RewardSize','large'	1	1	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimC, -5.66, -5.66, 100, 100)	Pic(mask_circle, -5.66, -5.66, 112.8, 112.8)
 31	'RewardSize','large'	1	1	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimC, 0, -8, 100, 100)	Pic(mask_circle, 0, -8, 112.8, 112.8)
 32	'RewardSize','large'	1	1	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimC, 5.66, -5.66, 100, 100)	Pic(mask_circle, 5.66, -5.66, 112.8, 112.8)
-33	'RewardSize','large'	1	5,6	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimC, 5.66, -5.66, 100, 100)	Pic(mask_circle, 5.66, -5.66, 112.8, 112.8)
-34	'RewardSize','large'	1	5,7	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimC, 5.66, -5.66, 100, 100)	Pic(mask_triangle, 5.66, -5.66, 141.4, 141.4)
-35	'RewardSize','large'	1	5,8	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimC, 5.66, -5.66, 100, 100)	Pic(mask_square, 5.66, -5.66, 100, 100)
-36	'RewardSize','large'	1	5,9	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimC, 5.66, -5.66, 100, 100)	Pic(mask_cross, 5.66, -5.66, 126.5, 126.5)
