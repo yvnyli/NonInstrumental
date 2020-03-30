@@ -10,7 +10,7 @@ Condition	Info	Frequency	Block	Timing File	TaskObject#1	TaskObject#2	TaskObject#
 9	'RewardSize','average'	1	2	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimB1, 8, 0, 100, 100)	Pic(mask_circle, 8, 0, 112.8, 112.8)
 10	'RewardSize','average'	1	2	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimB1, 5.66, 5.66, 100, 100)	Pic(mask_circle, 5.66, 5.66, 112.8, 112.8)
 11	'RewardSize','average'	1	2	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimB1, 0, 8, 100, 100)	Pic(mask_circle, 0, 8, 112.8, 112.8)
-12	'RewardSize','average'	1	2	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimB1, -5.66, 5.66, 100, 100)	Pic(mask_circle, -5.66, -5.66, 112.8, 112.8)
+12	'RewardSize','average'	1	2	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimB1, -5.66, 5.66, 100, 100)	Pic(mask_circle, -5.66, 5.66, 112.8, 112.8)
 13	'RewardSize','average'	1	2	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimB1, -8, 0, 100, 100)	Pic(mask_circle, -8, 0, 112.8, 112.8)
 14	'RewardSize','average'	1	2	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimB1, -5.66, -5.66, 100, 100)	Pic(mask_circle, -5.66, -5.66, 112.8, 112.8)
 15	'RewardSize','average'	1	2	NonInstrumental_timing	fix(0,0)	ttl(1)	Pic(stimB1, 0, -8, 100, 100)	Pic(mask_circle, 0, -8, 112.8, 112.8)

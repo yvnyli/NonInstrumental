@@ -1,18 +1,117 @@
 Code	Description
-1	TrialGateON
-3	FixationPointON
-2	TrialGateOFF
-4	FixationPointOFF
-12 TrialGateOFF
-14	FixationPointOFF
-24	FixationPointOFF
-25	MaskON
-35	MaskOFF
-36	CueON
-46	CueOFF
-45	MaskON
-55	MaskOFF
-91	SmallReward
-92	MediumReward
-93	LargeReward
-100	Success
+1	START trial
+2	Fixation ON
+3	TaskObject-1 ON
+4	Fixation OFF
+5	TaskObject-1 OFF
+6	Fixation acquired
+7	Fixation break
+8	Fixation FakeBreak
+9	ML START
+10	Right Bar ON
+11	Right Bar OFF
+12	Left Bar ON
+13	Left Bar OFF
+14	Target acquired
+15	Target missed
+16	Target fixation break
+17	Max RT exceeded
+18	ML END
+19	Cue1 ON
+20	Cue1 OFF
+21	Target1 ON
+22	Target1 OFF
+23	Distractor1 ON
+24	Distractor1 OFF
+25	Cue2 ON
+26	Cue2 OFF
+27	Target2 ON
+28	Target2 OFF
+29	Distractor2 ON
+30	Distractor2 OFF
+31	Cue3 ON
+32	Cue3 OFF
+33	Target3 ON
+34	Target3 OFF
+35	Distractor3 ON
+36	Distractor3 OFF
+37	Cue4 ON
+38	Cue4 OFF
+39	Target4 ON
+40	Target4 OFF
+41	Distractor4 ON
+42	Distractor4 OFF
+43	Cue5 ON
+44	Cue5 OFF
+45	Target5 ON
+46	Target5 OFF
+47	Distractor5 ON
+48	Distractor5 OFF
+49	Cue6 ON
+50	Cue6 OFF
+51	Target6 ON
+52	Target6 OFF
+53	Distractor6 ON
+54	Distractor6 OFF
+55	undefined
+56	undefined
+57	undefined
+58	undefined
+59	undefined
+60	undefined
+61	undefined
+62	undefined
+63	undefined
+64	undefined
+65	undefined
+66	undefined
+67	undefined
+68	undefined
+69	undefined
+70	undefined
+71	undefined
+72	undefined
+73	undefined
+74	undefined
+75	undefined
+76	undefined
+77	undefined
+78	undefined
+79	undefined
+80	undefined
+81	undefined
+82	undefined
+83	undefined
+84	undefined
+85	undefined
+86	undefined
+87	undefined
+88	undefined
+89	undefined
+90	undefined
+91	undefined
+92	undefined
+93	undefined
+94	undefined
+95	undefined
+96	undefined
+97	undefined
+98	Lick ON
+99	Lick OFF
+100	END trial
+101	undefined
+102	undefined
+103	undefined
+104	undefined
+105	undefined
+106	undefined
+107	undefined
+108	undefined
+109	undefined
+110	Key press <Space>
+111	Key press <Up>
+112	Key press <Down>
+113	Key press <Right>
+114	Key press <Left>
+115	Key press <enter>
+116	Key press (other)
