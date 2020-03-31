@@ -28,12 +28,12 @@ editable('remask');
 % define time intervals (in ms):
 wait_for_fix = 1000;
 initial_fix = 1000; 
-reveal_fix = 100;
+reveal_fix = 300;
 interaction_time = 2000;
 half_iti = 500;
 
 % fixation window (in degrees):
-fix_radius = 2.0755; % = 50 pixels calculated from the cfg.mat, and cue is 100 by 100
+fix_radius = 2.5; % = 60 pixels calculated from the cfg.mat, and cue is 80 by 80, so there's more of a border
 
 % reward
 reward_small = 20;
