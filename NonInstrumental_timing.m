@@ -28,7 +28,7 @@ editable('remask');
 % define time intervals (in ms):
 wait_for_fix = 1000;
 initial_fix = 1000; 
-reveal_fix = 300;
+reveal_fix = 400;
 interaction_time = 2000;
 half_iti = 500;
 
