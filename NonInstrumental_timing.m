@@ -10,8 +10,11 @@
 % DEFINE TASKOBJECTS
 fixation_point = 1;
 trialGate = 2;
-mask = 4;
 cue = 3;
+mask = 4;
+fakeMask1 = 5;
+fakeMask2 = 6;
+maskArray = [4,5,6];
 
 % DEFINE EDITABLE VARIABLES
 editable('wait_for_fix');
@@ -23,12 +26,12 @@ editable('fix_radius');
 editable('reward_small');
 editable('reward_large');
 editable('reward_average');
-editable('remask');
+editable('eccentricity');
 
 % define time intervals (in ms):
 wait_for_fix = 1000;
 initial_fix = 1000; 
-reveal_fix = 400;
+reveal_fix = 200;
 interaction_time = 2000;
 half_iti = 500;
 
@@ -40,11 +43,37 @@ reward_small = 20;
 reward_large = 200;
 reward_average = 110;
 
-% remask: 0 for no remasking, 1 for remasking
-remask = 1;
+% eccentricity of mask/cue
+eccentricity = 8;
+
+% 8 positions starting from right going counterclockwise
+positions = [1,0; 1/sqrt(2),1/sqrt(2); 0,1; -1/sqrt(2),1/sqrt(2);...
+  -1,0; -1/sqrt(2),-1/sqrt(2); 0,-1; 1/sqrt(2),-1/sqrt(2)] * eccentricity;
+
+
 
 
 % TASK:
+% get the condition number of current trial
+currentCond = TrialRecord.CurrentCondition;
+% randomize whether cue is Position 1, 2, or 3 in the search array
+cueInArray = randi([1,3],1);
+% subtract that from [1,2,3] to make cue's position 0
+% multiply by 2 to make spacing 90 degrees (every other position)
+% add currentCond to make the cue's position the one according to condition
+currentPos = ([1,2,3] - cueInArray) * 2 + currentCond;
+% mod by 8 (and 1-indexing)
+currentPos = 1 + mod(currentPos - 1,8);
+% get cue and fake mask positions and put them there
+cuePos = currentPos(cueInArray);
+fakeMask1Pos = currentPos(1+mod(cueInArray,3));
+fakeMask2Pos = currentPos(1+mod(cueInArray+1,3));
+reposition_object(cue,positions(cuePos,1),positions(cuePos,2));
+reposition_object(mask,positions(cuePos,1),positions(cuePos,2));
+reposition_object(fakeMask1,positions(fakeMask1Pos,1),positions(fakeMask1Pos,2));
+reposition_object(fakeMask2,positions(fakeMask2Pos,1),positions(fakeMask2Pos,2));
+
+
 [TimeTrialGateOn] = toggleobject(trialGate, 'eventmarker',1,'status','on');
 
 % acquire fixation on FP within wait_for_fix
@@ -68,99 +97,61 @@ end
 
 % turn off FP
 toggleobject(fixation_point,'eventmarker',24,'status','off');
-% turn on mask
-[TimeMaskOn] = toggleobject(mask,'eventmarker',25,'status','on'); 
+% turn on mask and fake masks
+[TimeMaskOn] = toggleobject(maskArray,'eventmarker',25,'status','on'); 
 
-if ~remask % this is the version where a revealed cue stays revealed
 
-  % interact with mask/cue for the duration of interaction_time
-  % 1 if fixation on mask is never initiated, just turn off mask and jump to reward 
-  %   if fixation on mask is initiated, 
-  % 2    then broken, keep trying (thus loop) for the remainder of interaction_time
-  % 3    then maintained for the duration of reveal_fix, reveal and elapse remainder 
-  interaction_remainder = interaction_time;
-  interaction_end = trialtime + interaction_time;
-  while true % taken care of inside of the loop 
-    ontarget = eyejoytrack('acquirefix', mask, fix_radius, interaction_remainder);
-    if ~ontarget
-      % 1
-      toggleobject(mask,'eventmarker',35,'status','off');
-	  break;
-    else
-      ontarget = eyejoytrack('holdfix', mask, fix_radius, reveal_fix)
-      if ~ontarget
-	    % 2
-        interaction_remainder = interaction_end - trialtime;
-	    if interaction_remainder > reveal_fix % as long as there is still time to reveal, keep looping
-	      continue;
-	    else % otherwise just wait it out and turn off the mask and jump to reward 
-	      idle(max(0,interaction_remainder));
-		  toggleobject(mask,'eventmarker',35,'status','off');
-		  break;
-	    end 
-	  else
-	    % 3
-	    % reveal: mask off, cue on
-	    toggleobject(mask,'eventmarker',35,'status','off');
-	    toggleobject(cue,'eventmarker',36,'status','on');
-	    idle(max(0,interaction_end - trialtime)); % elapse the rest of interaction time
-	    % cue off, go to reward
-	    toggleobject(cue,'eventmarker',46,'status','off');
-	    break;
-	  end
-    end
-  end 
-  
-  
-else % remask=1: in this version, mask is back on when he looks away
-
-  interaction_remainder = interaction_time;
-  interaction_end = trialtime + interaction_time;
-  while true 
-    ontarget = eyejoytrack('acquirefix', mask, fix_radius, interaction_remainder);
-	if ~ontarget
+interaction_remainder = interaction_time;
+interaction_end = trialtime + interaction_time;
+while true 
+  acquireFixMask = eyejoytrack('acquirefix', maskArray,...
+    fix_radius, interaction_remainder);
+	if acquireFixMask==0
 	  % never initiate fixation during the entire interaction time, turn off mask and reward 
-	  toggleobject(mask,'eventmarker',35,'status','off');
+	  toggleobject(maskArray,'eventmarker',30,'status','off');
 	  break;
 	else % initiated fixation 
-	  ontarget = eyejoytrack('holdfix', mask, fix_radius, reveal_fix)
+	  ontarget = eyejoytrack('holdfix', maskArray(acquireFixMask), fix_radius, reveal_fix);
 	  if ~ontarget % but fixation is broken, 
 	    interaction_remainder = interaction_end - trialtime;
-		if interaction_remainder > reveal_fix 
-		  continue; % as long as there's still time, keep trying 
-		else
-		  % if there's not enough time, wait it out and jump to reward 
-		  idle(max(0,interaction_remainder));
-		  toggleobject(mask,'eventmarker',35,'status','off');
-		  break;
-		end
-      else % fixation is maintained for the duration of reveal_fix
-	    toggleobject(mask,'eventmarker',35,'status','off');
-		toggleobject(cue,'eventmarker',36,'status','on'); % reveal 
-		% use the line below to see if fixation is broken from now till end of interaction time 
-		ontarget = eyejoytrack('holdfix', cue, fix_radius, interaction_end - trialtime)
-		if ~ontarget
-		  % fixation was broken, reapply mask and if there's still time, do the loop again
-		  toggleobject(cue, 'eventmarker',46,'status','off');
-		  toggleobject(mask, 'eventmarker',45,'status','on');
-		  interaction_remainder = interaction_end - trialtime;
-		  if interaction_remainder > reveal_fix
-		    continue;
-		  else % not enough time left, just wait it out 
-		    idle(max(0,interaction_remainder));
-			toggleobject(mask,'eventmarker',55,'status','off');
-			break;
-		  end
-		else % fixation is maintained for the entire duration of interaction_remainder, reward 
-		  toggleobject(cue,'eventmarker',46,'status','off');
-		  break;
-		end 
+      if interaction_remainder > reveal_fix 
+        continue; % as long as there's still time, keep trying 
+      else
+        % if there's not enough time, wait it out and jump to reward 
+        idle(max(0,interaction_remainder));
+        toggleobject(maskArray,'eventmarker',30,'status','off');
+        break;
+      end
+    else % fixation is maintained for the duration of reveal_fix
+      toggleobject(maskArray(acquireFixMask),'eventmarker',30+acquireFixMask,'status','off');
+      if acquireFixMask==1 % if the revealed mask is the true one, reveal
+        toggleobject(cue,'eventmarker',36,'status','on');  
+      end
+      % use the line below to see if fixation is broken from now till end of interaction time 
+      ontarget = eyejoytrack('holdfix', maskArray(acquireFixMask),...
+        fix_radius, interaction_end - trialtime);
+      if ~ontarget
+        % fixation was broken, reapply mask and if there's still time, do the loop again
+        if acquireFixMask==1 % if it the cue was on, turn it off
+          toggleobject(cue, 'eventmarker',46,'status','off');
+        end
+        toggleobject(maskArray(acquireFixMask), 'eventmarker',47,'status','on');
+        interaction_remainder = interaction_end - trialtime;
+        if interaction_remainder > reveal_fix
+          continue;
+        else % not enough time left, just wait it out 
+          idle(max(0,interaction_remainder));
+          toggleobject(maskArray,'eventmarker',55,'status','off');
+          break;
+        end
+      else % fixation is maintained for the entire duration of interaction_remainder, reward 
+        toggleobject([cue,maskArray],'eventmarker',66,'status','off');
+        break;
+      end 
 	  end
 	end 
-  end
+end
   
-  
-end  % stay revealed or remask 
 
 
 
