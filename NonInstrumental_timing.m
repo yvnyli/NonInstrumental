@@ -144,7 +144,7 @@ while true
           continue;
         else % not enough time left, just wait it out 
           idle(max(0,interaction_remainder));
-          toggleobject(maskArray,'eventmarker',55,'status','off');
+          toggleobject(maskArray,'eventmarker',30,'status','off');
           break;
         end
       else % fixation is maintained for the entire duration of interaction_remainder, reward 

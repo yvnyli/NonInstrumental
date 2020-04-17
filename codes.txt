@@ -30,8 +30,8 @@ Code	Description
 29	 
 30	AllMasksOff
 31	RealMaskOff
-32	FakeMaskOff
-33	FakeMaskOff
+32	FakeMask1Off
+33	FakeMask2Off
 34	 
 35	 
 36	CueON
@@ -53,7 +53,7 @@ Code	Description
 52	 
 53	 
 54	 
-55	MaskOFF
+55	 
 56	 
 57	 
 58	 
