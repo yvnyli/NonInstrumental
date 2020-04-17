@@ -137,7 +137,7 @@ while true
         fix_radius, interaction_end - trialtime);
       if ~ontarget
         % fixation was broken, reapply mask and if there's still time, do the loop again
-        if acquireFixMask==1 % if it the cue was on, turn it off
+        if acquireFixMask==1 % if the cue was on, turn it off
           toggleobject(cue, 'eventmarker',46,'status','off');
         else % log an event
           eventmarker(45);
@@ -152,7 +152,11 @@ while true
           break;
         end
       else % fixation is maintained for the entire duration of interaction_remainder, reward 
-        toggleobject(cue,'eventmarker',46,'status','off');
+        if acquireFixMask==1 % if the cue was on, turn it off
+          toggleobject(cue,'eventmarker',46,'status','off');
+        else % log the end of mask viewing
+          eventmarker(45);
+        end
         toggleobject(maskArray,'eventmarker',30,'status','off');
         break;
       end 
