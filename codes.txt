@@ -33,7 +33,7 @@ Code	Description
 32	FakeMask1Off
 33	FakeMask2Off
 34	 
-35	 
+35	FakeMaskRevealed
 36	CueON
 37	 
 38	 
@@ -43,7 +43,7 @@ Code	Description
 42	 
 43	 
 44	 
-45	 
+45	FakeMaskEndViewing
 46	CueOFF
 47	MaskBackON
 48	 
@@ -64,7 +64,7 @@ Code	Description
 63	 
 64	 
 65	 
-66	EverythingOFF
+66	 
 67	 
 68	 
 69	 

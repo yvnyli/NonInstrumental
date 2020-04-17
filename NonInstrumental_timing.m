@@ -129,6 +129,8 @@ while true
       toggleobject(maskArray(acquireFixMask),'eventmarker',30+acquireFixMask,'status','off');
       if acquireFixMask==1 % if the revealed mask is the true one, reveal
         toggleobject(cue,'eventmarker',36,'status','on');  
+      else % if the revealed mask is a fake one, log an event
+        eventmarker(35);
       end
       % use the line below to see if fixation is broken from now till end of interaction time 
       ontarget = eyejoytrack('holdfix', maskArray(acquireFixMask),...
@@ -137,6 +139,8 @@ while true
         % fixation was broken, reapply mask and if there's still time, do the loop again
         if acquireFixMask==1 % if it the cue was on, turn it off
           toggleobject(cue, 'eventmarker',46,'status','off');
+        else % log an event
+          eventmarker(45);
         end
         toggleobject(maskArray(acquireFixMask), 'eventmarker',47,'status','on');
         interaction_remainder = interaction_end - trialtime;
@@ -148,7 +152,8 @@ while true
           break;
         end
       else % fixation is maintained for the entire duration of interaction_remainder, reward 
-        toggleobject([cue,maskArray],'eventmarker',66,'status','off');
+        toggleobject(cue,'eventmarker',46,'status','off');
+        toggleobject(maskArray,'eventmarker',30,'status','off');
         break;
       end 
 	  end
