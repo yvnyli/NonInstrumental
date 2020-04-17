@@ -99,3 +99,31 @@ Code	Description
 98	 
 99	 
 100	Success
+101	CueAtPosition1
+102	CueAtPosition2
+103	CueAtPosition3
+104	CueAtPosition4
+105	CueAtPosition5
+106	CueAtPosition6
+107	CueAtPosition7
+108	CueAtPosition8
+109	 
+110	 
+111	Mask1AtPosition1
+112	Mask1AtPosition2
+113	Mask1AtPosition3
+114	Mask1AtPosition4
+115	Mask1AtPosition5
+116	Mask1AtPosition6
+117	Mask1AtPosition7
+118	Mask1AtPosition8
+119	 
+120	 
+121	Mask2AtPosition1
+122	Mask2AtPosition2
+123	Mask2AtPosition3
+124	Mask2AtPosition4
+125	Mask2AtPosition5
+126	Mask2AtPosition6
+127	Mask2AtPosition7
+128	Mask2AtPosition8

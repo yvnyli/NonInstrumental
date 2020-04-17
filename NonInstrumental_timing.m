@@ -73,6 +73,9 @@ reposition_object(mask,positions(cuePos,1),positions(cuePos,2));
 reposition_object(fakeMask1,positions(fakeMask1Pos,1),positions(fakeMask1Pos,2));
 reposition_object(fakeMask2,positions(fakeMask2Pos,1),positions(fakeMask2Pos,2));
 
+% these don't need to be time stamped, just a way of saving data
+eventmarker([100+cuePos, 110+fakeMask1Pos, 120+fakeMask2Pos]);
+
 
 [TimeTrialGateOn] = toggleobject(trialGate, 'eventmarker',1,'status','on');
 
