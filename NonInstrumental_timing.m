@@ -185,15 +185,34 @@ end
 
 
 % reward
-if strcmp(TrialRecord.CurrentConditionInfo.RewardSize,'small')
-  goodmonkey(reward_small, 'NumReward', 1);
-  eventmarker(91);
-elseif strcmp(TrialRecord.CurrentConditionInfo.RewardSize,'average')
-  goodmonkey(reward_average, 'NumReward', 1);
-  eventmarker(92);
+if TrialRecord.CurrentBlock<=2 % high diagnostic blocks
+  % give reward according to condition info
+  if strcmp(TrialRecord.CurrentConditionInfo.RewardSize,'small')
+    goodmonkey(reward_small, 'NumReward', 1);
+    eventmarker(91);
+  elseif strcmp(TrialRecord.CurrentConditionInfo.RewardSize,'average')
+    goodmonkey(reward_average, 'NumReward', 1);
+    eventmarker(92);
+  else
+    goodmonkey(reward_large, 'NumReward', 1);
+    eventmarker(93);
+  end
+elseif TrialRecord.CurrentBlock<=4 % low diagnostic blocks
+  % if condition info says small or large, give reward randomly
+  if strcmp(TrialRecord.CurrentConditionInfo.RewardSize,'average')
+    goodmonkey(reward_average, 'NumReward', 1);
+    eventmarker(92);
+  else
+    if rand>0.5
+      goodmonkey(reward_large, 'NumReward', 1);
+      eventmarker(93);
+    else
+      goodmonkey(reward_small, 'NumReward', 1);
+      eventmarker(91);
+    end
+  end
 else
-  goodmonkey(reward_large, 'NumReward', 1);
-  eventmarker(93);
+  goodmonkey(reward_small,'NumReward',20);
 end
 
 idle(half_iti);
