@@ -1,4 +1,4 @@
-%Delayed Match-to-Sample (DMS) timing script
+% Non-instrumental portion timing script
 
 % This task requires that either an "eye" input or joystick (attached to the
 % eye input channels) is available to perform the necessary responses.
@@ -15,6 +15,7 @@ mask = 4;
 fakeMask1 = 5;
 fakeMask2 = 6;
 maskArray = [4,5,6];
+BlockChangeFlash = 7;
 
 % DEFINE EDITABLE VARIABLES
 editable('wait_for_fix');
@@ -31,7 +32,7 @@ editable('eccentricity');
 % define time intervals (in ms):
 wait_for_fix = 1000;
 initial_fix = 1000; 
-reveal_fix = 200;
+reveal_fix = 400;
 interaction_time = 2000;
 half_iti = 500;
 
@@ -54,6 +55,18 @@ positions = [1,0; 1/sqrt(2),1/sqrt(2); 0,1; -1/sqrt(2),1/sqrt(2);...
 
 
 % TASK:
+
+% if this is the first trial of a block, flash the screen to indicate block
+% change
+if TrialRecord.CurrentTrialWithinBlock==1
+  idle(1000);
+  toggleobject(BlockChangeFlash,'Status','on');
+  idle(1000);
+  toggleobject(BlockChangeFlash,'Status','off');
+  idle(3000);
+end
+
+
 % get the condition number of current trial
 currentCond = TrialRecord.CurrentCondition;
 % randomize whether cue is Position 1, 2, or 3 in the search array
