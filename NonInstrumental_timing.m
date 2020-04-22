@@ -23,7 +23,8 @@ editable('initial_fix');
 editable('reveal_fix');
 editable('interaction_time');
 editable('half_iti');
-editable('fix_radius');
+editable('FP_fix_radius');
+editable('target_fix_radius');
 editable('reward_small');
 editable('reward_large');
 editable('reward_average');
@@ -37,7 +38,8 @@ interaction_time = 2000;
 half_iti = 500;
 
 % fixation window (in degrees):
-fix_radius = 2.5; % = 60 pixels calculated from the cfg.mat, and cue is 80 by 80, so there's more of a border
+FP_fix_radius = 2.5;
+target_fix_radius = 2.8; % = 67 pixels, cue is 80 by 80, and the largest mask (triangle) is 113.1 by 113.1
 
 % reward
 reward_small = 20;
