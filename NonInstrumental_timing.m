@@ -96,7 +96,7 @@ eventmarker([100+cuePos, 110+fakeMask1Pos, 120+fakeMask2Pos]);
 
 % acquire fixation on FP within wait_for_fix
 [TimeFixOn] = toggleobject(fixation_point,'eventmarker',3,'status','on');
-ontarget = eyejoytrack('acquirefix', fixation_point, fix_radius, wait_for_fix);
+ontarget = eyejoytrack('acquirefix', fixation_point, FP_fix_radius, wait_for_fix);
 if ~ontarget 
   [TimeTrialGateOff] = toggleobject(trialGate,'eventmarker',2,'status','off');
   toggleobject(fixation_point,'eventmarker',4,'status','off');
@@ -105,7 +105,7 @@ if ~ontarget
 end
 
 % hold FP fixation for the duration of initial_fix 
-ontarget = eyejoytrack('holdfix', fixation_point, fix_radius, initial_fix);
+ontarget = eyejoytrack('holdfix', fixation_point, FP_fix_radius, initial_fix);
 if ~ontarget
   [TimeTrialGateOff] = toggleobject(trialGate,'eventmarker',12,'status','off');
   toggleobject(fixation_point,'eventmarker',14,'status','off');
@@ -123,13 +123,13 @@ interaction_remainder = interaction_time;
 interaction_end = trialtime + interaction_time;
 while true 
   acquireFixMask = eyejoytrack('acquirefix', maskArray,...
-    fix_radius, interaction_remainder);
+    target_fix_radius, interaction_remainder);
 	if acquireFixMask==0
 	  % never initiate fixation during the entire interaction time, turn off mask and reward 
 	  toggleobject(maskArray,'eventmarker',30,'status','off');
 	  break;
 	else % initiated fixation 
-	  ontarget = eyejoytrack('holdfix', maskArray(acquireFixMask), fix_radius, reveal_fix);
+	  ontarget = eyejoytrack('holdfix', maskArray(acquireFixMask), target_fix_radius, reveal_fix);
 	  if ~ontarget % but fixation is broken, 
 	    interaction_remainder = interaction_end - trialtime;
       if interaction_remainder > reveal_fix 
@@ -149,7 +149,7 @@ while true
       end
       % use the line below to see if fixation is broken from now till end of interaction time 
       ontarget = eyejoytrack('holdfix', maskArray(acquireFixMask),...
-        fix_radius, interaction_end - trialtime);
+        target_fix_radius, interaction_end - trialtime);
       if ~ontarget
         % fixation was broken, reapply mask and if there's still time, do the loop again
         if acquireFixMask==1 % if the cue was on, turn it off
