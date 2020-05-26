@@ -171,6 +171,7 @@ while true
 		    eventmarker(35-firstChosenDd); % note down choice
       end
       toggleobject(masks(acquireFixMask),'eventmarker',35,'status','off');
+	  eventmarker(50+acquireFixMask); % mark which mask is revealed
 	    if acquireFixMask==1 
         toggleobject(cues(1),'eventmarker',35+1,'status','on'); % reveal
       elseif acquireFixMask==4

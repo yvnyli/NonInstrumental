@@ -49,12 +49,12 @@ Code	Description
 48	 
 49	 
 50	 
-51	 
-52	 
-53	 
-54	 
-55	 
-56	 
+51	HighDCueMaskOff
+52	HighDFakeMaskOff
+53	HighDFakeMaskOff
+54	lowdCueMaskOff
+55	lowdFakeMaskOff
+56	lowdFakeMaskOff
 57	 
 58	 
 59	 
