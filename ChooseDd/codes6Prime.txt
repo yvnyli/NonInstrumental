@@ -1,0 +1,119 @@
+Code	Description
+1	TrialGateON
+2	TrialGateOFF
+3	FixationPointON
+4	FixationPointOFF
+5	 
+6	 
+7	 
+8	 
+9	 
+10	 
+11	 
+12	TrialGateOFF
+13	 
+14	FixationPointOFF
+15	 
+16	 
+17	 
+18	 
+19	 
+20	 
+21	 
+22	 
+23	 
+24	FixationPointOFF
+25	MasksON
+26	 
+27	 
+28	 
+29	 
+30	 
+31	 
+32	 
+33	lowdCueChosen1st
+34	HighDCueChosen1st
+35	MasksOff
+36	HighDCueON
+37	lowdCueON
+38	 
+39	 
+40	 
+41	 
+42	 
+43	 
+44	 
+45	MaskBackON
+46	CueOFF
+47	 
+48	 
+49	 
+50	 
+51	 
+52	 
+53	 
+54	 
+55	 
+56	 
+57	 
+58	 
+59	 
+60	 
+61	 
+62	 
+63	 
+64	 
+65	 
+66	 
+67	 
+68	 
+69	 
+70	 
+71	 
+72	 
+73	 
+74	 
+75	 
+76	 
+77	 
+78	 
+79	 
+80	 
+81	 
+82	 
+83	 
+84	 
+85	 
+86	 
+87	 
+88	 
+89	 
+90	 
+91	SmallReward
+92	MediumReward
+93	LargeReward
+94	 
+95	 
+96	 
+97	 
+98	 
+99	 
+100	Success
+101	HighDCueAtPosition1
+102	HighDCueAtPosition2
+103	HighDCueAtPosition3
+104	HighDCueAtPosition4
+105	HighDCueAtPosition5
+106	HighDCueAtPosition6
+107	HighDCueAtPosition7
+108	HighDCueAtPosition8
+109	 
+110	 
+111	lowdCueAtPosition1
+112	lowdCueAtPosition2
+113	lowdCueAtPosition3
+114	lowdCueAtPosition4
+115	lowdCueAtPosition5
+116	lowdCueAtPosition6
+117	lowdCueAtPosition7
+118	lowdCueAtPosition8
