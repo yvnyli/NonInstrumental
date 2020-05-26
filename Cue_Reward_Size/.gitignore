@@ -1,0 +1,6 @@
+*.asv
+*.bhv
+*.swp
+default_cfg.mat
+*_D.mat
+*.png
